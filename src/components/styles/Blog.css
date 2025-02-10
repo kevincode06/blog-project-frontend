@@ -1,0 +1,17 @@
+/* src/styles/Blog.css */
+.blog {
+    padding: 30px;
+  }
+  
+  .blog-post {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .blog-post img {
+    width: 150px;
+    border-radius: 10px;
+  }
+  
