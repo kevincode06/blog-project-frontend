@@ -1,25 +1,12 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import "./styles/Home.css";
+import React from 'react';
+import './styles/Home.css';
 
 // Import images
-import fashion1 from "../assets/fashion1.jpg";
-import fashion2 from "../assets/fashion2.jpg";
-import fashion3 from "../assets/fashion3.jpg";
+import fashion1 from '../assets/fashion1.jpg';
+import fashion2 from '../assets/fashion2.jpg';
+import fashion3 from '../assets/fashion3.jpg';
 
 const Home = () => {
-  const [posts, setPosts] = useState([]); // Store posts from backend
-
-  // Fetch posts from backend
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/posts") // Backend API URL
-      .then((response) => {
-        setPosts(response.data); // Store the fetched posts in state
-      })
-      .catch((error) => console.error("Error fetching posts:", error));
-  }, []);
-
   return (
     <div className="home">
       <header className="hero">
@@ -27,7 +14,6 @@ const Home = () => {
         <p>Stay updated with the latest fashion styles, trends, and insights!</p>
       </header>
 
-      {/* Static Fashion Trends */}
       <section className="latest-trends">
         <h2>Latest in Trends</h2>
         <div className="trend-grid">
@@ -45,26 +31,8 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* Dynamic Blog Posts from Backend */}
-      <section className="blog-posts">
-        <h2>Latest Blog Posts</h2>
-        {posts.length > 0 ? (
-          <div className="post-grid">
-            {posts.map((post) => (
-              <div key={post.id} className="post-card">
-                <h3>{post.title}</h3>
-                <p>{post.content}</p>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p>Loading posts...</p>
-        )}
-      </section>
     </div>
   );
 };
 
 export default Home;
-
