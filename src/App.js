@@ -6,6 +6,7 @@ import Blog from "./components/Blog";
 import Contact from "./components/Contact";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import PostBlog from "./components/PostBlog";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/postblog" element={<PostBlog />} />  {/* Added route for PostBlog */}
       </Routes>
     </Router>
   );
