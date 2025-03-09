@@ -1,42 +1,62 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import './styles/Blog.css';
-import fashion1 from '../assets/fashion1.jpg';  // Import the first image
-import fashion2 from '../assets/fashion2.jpg';  // Import the second image
-import fashion3 from '../assets/fashion3.jpg';  // Import the third image
+import fashion1 from '../assets/fashion1.jpg';
+import fashion8 from '../assets/fashion8.jpg';
+import fashion3 from '../assets/fashion3.jpg';
+import fashion4 from '../assets/fashion4.jpg';
+import fashion5 from '../assets/fashion5.jpg';
+import fashion6 from '../assets/fashion6.jpg';
+
+const posts = {
+  fashion1: { 
+    img: fashion1, 
+    title: "The Top Fall 2025 Copenhagen Fashion Week Trends", 
+    text: "Discover the latest trends in fashion from Copenhagen Fashion Week, where top designers unveil their most creative and cutting-edge designs. From elegant runway pieces to bold street styles, get inspired by the fresh trends shaping the industry this season." 
+  },
+  fashion8: { 
+    img: fashion8, 
+    title: "The Fall 2025 Menswear Trends", 
+    text: "Explore the hottest menswear fashion trends this season, from tailored suits with a modern twist to casual streetwear that makes a statement. Discover the must-have pieces and style tips to elevate your wardrobe effortlessly." 
+  },
+  fashion3: { 
+    img: fashion3, 
+    title: "Ultimate Guide to Fall Fashion 2025", 
+    text: "Find out what to wear this fall and how to style it with expert tips on layering, color coordination, and essential wardrobe pieces. Whether you prefer a classic look or a trend-forward outfit, we’ve got you covered." 
+  },
+  fashion4: { 
+    img: fashion4, 
+    title: "Latest Winter Fashion Collection 2025", 
+    text: "Stay warm and stylish with these winter fashion trends that blend comfort with high-end aesthetics. From cozy knitwear to sophisticated outerwear, discover how to beat the cold without sacrificing style." 
+  },
+  fashion5: { 
+    img: fashion5, 
+    title: "How to Dress Stylishly on a Budget", 
+    text: "Learn how to stay fashionable without breaking the bank by mastering budget-friendly shopping hacks, styling tips, and must-have affordable fashion pieces. Looking great doesn’t have to come with a hefty price tag!" 
+  },
+  fashion6: { 
+    img: fashion6, 
+    title: "The Best Summer Fashion Trends in 2025", 
+    text: "Discover the top summer fashion trends for 2025, featuring breezy fabrics, vibrant colors, and effortlessly chic outfits perfect for warm weather. Stay ahead of the style game with these must-have summer looks." 
+  }
+};
 
 const Blog = () => {
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const postKey = query.get("post") || "fashion1"; // Default to fashion1 if no post is selected
+  const post = posts[postKey];
+
+  if (!post) {
+    return <h2>Post Not Found</h2>;
+  }
+
   return (
     <div className="blog">
-      <h2>Latest Fashion Articles</h2>
-
-      {/* Blog Post 1 */}
+      <h2>{post.title}</h2>
       <div className="blog-post">
-        <img src={fashion1} alt="Fashion Post 1" />  {/* First image */}
-        <div>
-          <h3>How to Style Your Outfits in 2025</h3>
-          <p>Discover the best outfit combinations for this year.</p>
-          <a href="#">Read More</a>
-        </div>
-      </div>
-
-      {/* Blog Post 2 */}
-      <div className="blog-post">
-        <img src={fashion2} alt="Fashion Post 2" />  {/* Second image */}
-        <div>
-          <h3>Top Trends for Spring 2025</h3>
-          <p>Explore the hottest fashion trends for the upcoming season.</p>
-          <a href="#">Read More</a>
-        </div>
-      </div>
-
-      {/* Blog Post 3 */}
-      <div className="blog-post">
-        <img src={fashion3} alt="Fashion Post 3" />  {/* Third image */}
-        <div>
-          <h3>Ultimate Guide to Fall Fashion 2025</h3>
-          <p>Get ready for the best outfits to wear this fall.</p>
-          <a href="#">Read More</a>
-        </div>
+        <img src={post.img} alt={postKey} />
+        <p>{post.text}</p>
       </div>
     </div>
   );

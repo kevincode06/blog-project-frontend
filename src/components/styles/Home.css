@@ -11,12 +11,6 @@ body {
     padding: 40px;
   }
   
-  .hero {
-    background-image: url('../../assets/background.jpg');
-    background-size: cover;
-    color: white;
-  }
-  
   
   .hero h1 {
     font-size: 3rem;
