@@ -1,7 +1,7 @@
 .blog {
   max-width: 900px;
   margin: 0 auto;
-  padding-bottom: 50px; /* Creates space above the footer */
+  padding-bottom: 50px; 
 }
 
 .blog-post {
@@ -46,3 +46,15 @@
   text-decoration: underline;
 }
 
+.go-back-button {
+  background-color: #FE572E; 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.go-back-button:hover {
+  background-color: #ff4500; 
+}

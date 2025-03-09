@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './styles/Blog.css';
 import fashion1 from '../assets/fashion1.jpg';
 import fashion8 from '../assets/fashion8.jpg';
@@ -43,13 +43,18 @@ const posts = {
 
 const Blog = () => {
   const location = useLocation();
+  const navigate = useNavigate(); // Hook to navigate
   const query = new URLSearchParams(location.search);
-  const postKey = query.get("post") || "fashion1"; // Default to fashion1 if no post is selected
+  const postKey = query.get("post") || "fashion1"; 
   const post = posts[postKey];
 
   if (!post) {
     return <h2>Post Not Found</h2>;
   }
+
+  const handleGoBack = () => {
+    navigate('/'); // Navigates back to the home page
+  };
 
   return (
     <div className="blog">
@@ -58,6 +63,9 @@ const Blog = () => {
         <img src={post.img} alt={postKey} />
         <p>{post.text}</p>
       </div>
+      <button onClick={handleGoBack} className="go-back-button">
+        Go Back to Home
+      </button>
     </div>
   );
 };
